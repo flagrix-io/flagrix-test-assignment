@@ -28,12 +28,13 @@ any repo you didn't write: read it, don't run it.
 | `npm install` | `package.json` | `postinstall` pipes a download into a shell | Yes |
 | Opening the folder in VS Code | `.vscode/tasks.json`, `.vscode/settings.json` | a `folderOpen` task that pipes a download into a shell; automatic tasks switched on | Yes |
 | Reopening the folder in a dev container | `.devcontainer/devcontainer.json` | `initializeCommand` pipes a download into a shell; it runs on your machine, not in the container, before the container exists | Yes |
-| A later `git commit` | `package.json`, `.githooks/pre-commit` | `prepare` points `core.hooksPath` at a committed hook that pipes a download into a shell | **No.** The hook file has no extension Flagrix reads, and the `prepare` script isn't flagged |
+| A later `git commit` | `package.json`, `.githooks/pre-commit` | `prepare` points `core.hooksPath` at a committed hook that pipes a download into a shell | **No in scanner-core 0.9.1.** That version skips the hook file because it has no extension, and the `prepare` script isn't flagged. **Yes from scanner-core 0.10** with the matching rules release (neither released yet): the hook is read and flagged, and so is the `prepare` script |
 | Starting the dev server or a build | `tailwind.config.js` | code pushed off-screen behind 400 spaces | Yes, but this marker alone doesn't raise the verdict above low |
 | Running the app | `src/controllers/taskController.js` | text from a server turned into a function | Yes |
 
 **Expected verdict: HIGH RISK.** Results above are from scanner-core 0.9.1 with
 rules 2026.11.23.001 (25 November 2026).
 
-The row marked "No" is deliberate. A scan is pattern-based and reads some file
-types, not all; it reduces risk and can't promise a repo is safe.
+The git-hook marker stays in the fixture on purpose: it shows the gap in 0.9.1
+and checks the fix. A scan is pattern-based and reads some file types, not all;
+it reduces risk and can't promise a repo is safe.
